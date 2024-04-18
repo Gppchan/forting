@@ -12,8 +12,6 @@ import tools
 
 @tools.timer
 def main():
-    #爱你小宝
-
     path: Path = tools.get_file_path()
 
     workbook: Workbook = excel.load_workbook(path)
