@@ -23,10 +23,14 @@ def is_tuple_cell(excell: ExCell) -> bool:
 def is_tuple_tuple_cell(excell: ExCell) -> bool:
     return isinstance(excell, tuple) and isinstance(excell[0], tuple) and isinstance(excell[0][0], Cell)
 
+
 def to_row(index: int) -> int:
     return index + 1
+
+
 def to_column(index: int) -> str:
     return chr(ord("A") + index)
+
 
 def copy_cell(src: ExCell, tar: ExCell | Worksheet) -> bool:
     if isinstance(tar, Worksheet):
@@ -102,6 +106,6 @@ def timer(func):
         start: float = arrow.now().timestamp()
         func(*arg, **kwargs)
         end: float = arrow.now().timestamp()
-        print(f"运行时间：{end - start : .3f}s")
+        print(f"运行时间：{end - start: .3f}s")
 
     return wrapper
