@@ -2,6 +2,7 @@ from pathlib import Path
 
 import numpy as np
 import openpyxl as excel
+from openpyxl.styles.alignment import Alignment
 from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.workbook.workbook import Workbook
 from openpyxl.cell.cell import Cell
@@ -14,7 +15,7 @@ def main():
     path: Path = tools.get_file_path()
 
     workbook: Workbook = excel.load_workbook(path)
-
+    alignment = Alignment(horizontal='center',vertical='center')
     for _name in workbook.sheetnames:
         sheet: Worksheet = workbook[_name]
         workbook.create_sheet(_name + "-avg")
@@ -48,6 +49,7 @@ def main():
 
                 tar_cell: Cell = sheet_avg[f"{chr(tar_start_point)}{2 + j}"]
                 tar_cell.number_format = "0.00"
+                tar_cell.alignment = alignment
                 match len(nums):
                     case 1:
                         tar_cell.value = nums[0]
