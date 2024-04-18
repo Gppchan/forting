@@ -1,0 +1,4 @@
+*.xlsx
+.git
+.idea
+.venv
